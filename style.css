@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --bg-color: #0d1117;
+    --card-bg: rgba(30, 41, 59, 0.5);
+    --border-color: rgba(60, 78, 102, 0.8);
+    --primary-accent: #00e1ff;
+    --secondary-accent: #ff00c1;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --danger-color: #f85149;
+    --code-bg: rgba(13, 17, 23, 0.8);
+    --font-primary: 'Poppins', sans-serif;
+    --font-code: 'Fira Code', monospace;
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic body setup for locomotive scroll */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+}
+
+/* Main content area for styling */
+#main {
+    background-image:
+        radial-gradient(at 0% 0%, hsla(206, 68%, 20%, 0.3) 0px, transparent 50%),
+        radial-gradient(at 98% 99%, hsla(301, 100%, 30%, 0.3) 0px, transparent 50%);
+    padding: 2rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 992px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.header {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.header-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.header-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: all var(--transition-speed) ease;
+}
+
+.card:hover {
+    border-color: var(--primary-accent);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.card-header i {
+    color: var(--primary-accent);
+}
+
+.input-card { grid-column: 1 / -1; }
+@media (min-width: 992px) { .input-card { grid-column: 1 / 2; } }
+
+.output-card {
+    grid-column: 1 / -1;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+@media (min-width: 992px) { .output-card { grid-column: 2 / 3; } }
+
+label {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+#questionInput {
+    width: 100%;
+    min-height: 150px;
+    background: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    font-family: var(--font-code);
+    font-size: 1rem;
+    color: var(--text-primary);
+    resize: vertical;
+    transition: all var(--transition-speed) ease;
+}
+
+#questionInput:focus {
+    outline: none;
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 15px rgba(0, 225, 255, 0.2);
+}
+
+.prompt-examples { margin-top: 1.5rem; }
+.prompt-examples h4 {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+.prompt-chip {
+    display: inline-block;
+    background: var(--code-bg);
+    color: var(--text-secondary);
+    padding: 0.5rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin: 0.25rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all var(--transition-speed) ease;
+}
+
+.prompt-chip:hover {
+    color: var(--primary-accent);
+    border-color: var(--primary-accent);
+}
+
+#askButton {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+    background-size: 200% 100%;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+}
+
+#askButton:hover {
+    background-position: 100% 0;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 0, 193, 0.2);
+}
+
+#askButton:disabled {
+    background: var(--text-secondary);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+#outputContainer {
+    flex-grow: 1;
+    overflow-y: auto;
+    font-size: 1rem;
+    line-height: 1.7;
+    padding-right: 1rem;
+}
+
+#outputContainer::-webkit-scrollbar { width: 8px; }
+#outputContainer::-webkit-scrollbar-track { background: var(--code-bg); border-radius: 4px; }
+#outputContainer::-webkit-scrollbar-thumb { background: var(--primary-accent); border-radius: 4px; }
+#outputContainer::-webkit-scrollbar-thumb:hover { background: var(--secondary-accent); }
+
+.message { padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; }
+.message.info {
+    background: rgba(0, 225, 255, 0.1);
+    border-left: 4px solid var(--primary-accent);
+}
+.message.error {
+    background: rgba(248, 81, 73, 0.1);
+    border-left: 4px solid var(--danger-color);
+    color: #f89a95;
+    font-weight: 500;
+}
+
+#loadingSpinner {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.dots-spinner { display: flex; gap: 10px; }
+.dots-spinner div {
+    width: 15px; height: 15px; border-radius: 50%;
+    background-color: var(--primary-accent);
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+.dots-spinner .dot1 { animation-delay: -0.32s; }
+.dots-spinner .dot2 { animation-delay: -0.16s; }
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1.0); }
+}
+#loadingSpinner p { margin-top: 1.5rem; font-size: 1rem; color: var(--text-secondary); }
+
+#outputContainer pre {
+    background-color: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    font-family: var(--font-code);
+    font-size: 0.95rem;
+}
+#outputContainer code { color: #a5d6ff; }
+#outputContainer p > code {
+    background: var(--code-bg);
+    padding: 0.2em 0.4em; margin: 0;
+    font-size: 85%; border-radius: 6px;
+}
