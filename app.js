@@ -4,7 +4,7 @@ const questionInput = document.getElementById('questionInput');
         const loadingSpinner = document.getElementById('loadingSpinner');
 
         // ---===[ IMPORTANT: PASTE YOUR API KEY HERE ]===---
-        const GEMINI_API_KEY = "AIzaSyBsU59MFgTKSZcVoR4VG1TjUbNgjv2hrJ8";
+        const GEMINI_API_KEY = "";
         // =================================================
 
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
