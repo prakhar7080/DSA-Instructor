@@ -21,14 +21,12 @@
     box-sizing: border-box;
 }
 
-/* Basic body setup for locomotive scroll */
 body {
     background-color: var(--bg-color);
     color: var(--text-primary);
     font-family: var(--font-primary);
 }
 
-/* Main content area for styling */
 #main {
     background-image:
         radial-gradient(at 0% 0%, hsla(206, 68%, 20%, 0.3) 0px, transparent 50%),
