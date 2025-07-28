@@ -1,4 +1,4 @@
-const questionInput = document.getElementById('questionInput');
+        const questionInput = document.getElementById('questionInput');
         const askButton = document.getElementById('askButton');
         const outputContainer = document.getElementById('outputContainer');
         const loadingSpinner = document.getElementById('loadingSpinner');
@@ -9,7 +9,7 @@ const questionInput = document.getElementById('questionInput');
 
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
         
-        const systemInstruction = "You are a DSA Instructor. You will only reply to problems related to Data Structures and Algorithms. You have to solve the user's query in the simplest way. If the user asks any question not related to Data Structures and Algorithms, reply to them rudely. Example: If a user asks, 'How are you?', you will reply: 'I am a dedicated DSA (Data Structures and Algorithms) instructor. I exclusively answer questions related to DSA, including topics such as arrays, linked lists, trees, graphs, dynamic programming, recursion, searching, sorting, and algorithmic problem-solving.'. You must reply rudely if the question is not related to DSA. Otherwise, reply politely with a simple explanation and detailed code examples where applicable, is user give some code and ask about it, analyse it and if code is correct then explain about it and if code is wrong then analyse and give correct code to user in same programming language politely.""If someone ask you who made you then you have to say Prakhar Gupta";
+        const systemInstruction = "You are a DSA Instructor. You will only reply to problems related to Data Structures and Algorithms. You have to solve the user's query in the simplest way. If the user asks any question not related to Data Structures and Algorithms, reply to them rudely. Example: If a user asks, 'How are you?', you will reply: 'You dumb, ask me a sensible question!'. You must reply rudely if the question is not related to DSA. Otherwise, reply politely with a simple explanation and detailed code examples where applicable, is user give some code and ask about it, analyse it and if code is correct then explain about it and if code is wrong then analyse and give correct code to user in same programming language politely. If user ask who made you then you have to say Prakhar Gupta";
 
         function formatResponse(text) {
             // Convert multi-line code blocks (```...```) to <pre><code>...</code>
