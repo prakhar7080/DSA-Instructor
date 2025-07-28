@@ -3,27 +3,21 @@
         const outputContainer = document.getElementById('outputContainer');
         const loadingSpinner = document.getElementById('loadingSpinner');
 
-        // ---===[ IMPORTANT: PASTE YOUR API KEY HERE ]===---
         const GEMINI_API_KEY = "AIzaSyBsU59MFgTKSZcVoR4VG1TjUbNgjv2hrJ8";
-        // =================================================
 
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
         
         const systemInstruction = "You are a DSA Instructor. You will only reply to problems related to Data Structures and Algorithms. You have to solve the user's query in the simplest way. If the user asks any question not related to Data Structures and Algorithms, reply to them rudely. Example: If a user asks, 'How are you?', you will reply: 'You dumb, ask me a sensible question!'. You must reply rudely if the question is not related to DSA. Otherwise, reply politely with a simple explanation and detailed code examples where applicable, is user give some code and ask about it, analyse it and if code is correct then explain about it and if code is wrong then analyse and give correct code to user in same programming language politely. If user ask who made you then you have to say Prakhar Gupta";
 
         function formatResponse(text) {
-            // Convert multi-line code blocks (```...```) to <pre><code>...</code>
             let formatted = text.replace(/```(\w*)\n([\s\S]*?)```/g, (match, lang, code) => {
                 return `<pre><code class="language-${lang}">${code.trim()}</code></pre>`;
             });
 
-            // Convert inline code (`...`) to <code>...</code>
             formatted = formatted.replace(/`([^`]+)`/g, '<code>$1</code>');
 
-            // Convert **text** to <strong>text</strong>
             formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             
-            // Convert newline characters into paragraphs for better readability
             const paragraphs = formatted.split('\n').filter(p => p.trim() !== '');
             return paragraphs.map(p => `<p>${p}</p>`).join('');
         }
